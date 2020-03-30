@@ -1,4 +1,4 @@
-module github.com/aeneasr/go-crossorigin-proxy
+module github.com/ory/go-crossorigin-proxy
 
 go 1.14
 

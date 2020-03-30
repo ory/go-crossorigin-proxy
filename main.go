@@ -14,7 +14,7 @@
 
 package main
 
-import "github.com/aeneasr/go-crossorigin-proxy/cmd"
+import "github.com/ory/go-crossorigin-proxy/cmd"
 
 func main() {
 	cmd.Execute()
