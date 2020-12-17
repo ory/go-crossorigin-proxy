@@ -7,7 +7,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/http/httputil"
-	"os"
 	"time"
 
 	"github.com/sirupsen/logrus"
@@ -19,8 +18,6 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
-
-var githubToken = os.Getenv("GITHUB_TOKEN")
 
 type roundTripper func(r *http.Request) (*http.Response, error)
 
@@ -76,9 +73,6 @@ var serveCmd = &cobra.Command{
 				r.Header.Del("If-Modified-Since")
 				r.Header.Del("If-None-Match")
 				r.Header.Del("Cache-Control")
-				if len(githubToken) > 0 && r.URL.Host == "github.com" {
-					r.Header.Set("Authorization", "token "+githubToken)
-				}
 			},
 			Transport: roundTripper(func(r *http.Request) (*http.Response, error) {
 				if i, found := c.Get(id(r)); found {
